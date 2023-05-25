@@ -1,0 +1,208 @@
+---
+title: Tabsets inside tabsets
+---
+```{r setup, echo=FALSE}
+#| caption: "Loading libraries"
+#| output: false
+#| warning: false
+source(here::here("scripts", "01_data_preprocessing.R"))
+```
+## Complete Cases Liver (without liv_4402)
+:::: {.panel-tabset}
+
+## All Strains
+::: {.panel-tabset}
+### Microbiome (PC1,PC2)
+```{r, cache=TRUE, echo=FALSE}
+pca <- trqwe::mcreadRDS(here("results","rds","pca_75_liver_cc.rds"), mc.cores = 4)
+pc_scores <- pca$rotated %>% as.data.frame
+pc_scores$microbiome <- pca$metadata$microbiome
+pc_scores$age <- pca$metadata$age
+pc_scores$organ <- pca$metadata$organ
+pc_scores$batch <- pca$metadata$batch
+pc_scores$strain <-  pca$metadata$strain
+p <- ggplot(pc_scores, aes(x = PC1, y = PC2, color = microbiome, shape = strain, text = rownames(pc_scores))) +
+geom_point() +
+labs(title = "PCA Plot") +
+theme(plot.title = element_text(size = 20))
+
+ggplotly(p, tooltip = "text")
+```
+### Microbiome (PC2,PC3)
+```{r, echo=FALSE}
+p <- ggplot(pc_scores, aes(x = PC2, y = PC3, color = microbiome, shape = strain, text = rownames(pc_scores))) +
+geom_point() +
+labs(title = "PCA Plot") +
+theme(plot.title = element_text(size = 20))
+
+ggplotly(p, tooltip = "text")
+```
+### Age (PC1,PC2)
+```{r, cache=TRUE,echo=FALSE}
+p <- ggplot(pc_scores, aes(x = PC1, y = PC2, color = age, shape = strain, text = rownames(pc_scores))) +
+geom_point() +
+labs(title = "PCA Plot") +
+theme(plot.title = element_text(size = 20))
+
+ggplotly(p, tooltip = "text")
+```
+### Age (PC2,PC3)
+```{r, cache=TRUE,echo=FALSE}
+p <- ggplot(pc_scores, aes(x = PC2, y = PC3, color = age, shape = strain, text = rownames(pc_scores))) +
+geom_point() +
+labs(title = "PCA Plot") +
+theme(plot.title = element_text(size = 20))
+
+ggplotly(p, tooltip = "text")
+```
+### Batch (PC1,PC2)
+```{r, cache=TRUE,echo=FALSE}
+p <- ggplot(pc_scores, aes(x = PC1, y = PC2, color = batch, shape = strain, text = rownames(pc_scores))) +
+geom_point() +
+labs(title = "PCA Plot") +
+theme(plot.title = element_text(size = 20))
+
+ggplotly(p, tooltip = "text")
+```
+### Batch (PC2,PC3)
+```{r, cache=TRUE,echo=FALSE}
+p <- ggplot(pc_scores, aes(x = PC2, y = PC3, color = batch, shape = strain, text = rownames(pc_scores))) +
+geom_point() +
+labs(title = "PCA Plot") +
+theme(plot.title = element_text(size = 20))
+
+ggplotly(p, tooltip = "text")
+```
+:::
+
+## C57BL6
+::: {.panel-tabset}
+### Microbiome (PC1,PC2)
+```{r, cache=TRUE, echo=FALSE}
+pca <- trqwe::mcreadRDS(here("results","rds","pca_75_liver_cc.rds"), mc.cores = 4)
+pc_scores <- pca$rotated %>% as.data.frame
+pc_scores$microbiome <- pca$metadata$microbiome
+pc_scores$age <- pca$metadata$age
+pc_scores$organ <- pca$metadata$organ
+pc_scores$batch <- pca$metadata$batch
+pc_scores$strain <-  pca$metadata$strain
+p <- ggplot(pc_scores, aes(x = PC1, y = PC2, color = microbiome, shape = strain, text = rownames(pc_scores))) +
+geom_point() +
+labs(title = "PCA Plot") +
+theme(plot.title = element_text(size = 20))
+
+ggplotly(p, tooltip = "text")
+```
+### Microbiome (PC2,PC3)
+```{r, echo=FALSE}
+p <- ggplot(pc_scores, aes(x = PC2, y = PC3, color = microbiome, shape = strain, text = rownames(pc_scores))) +
+geom_point() +
+labs(title = "PCA Plot") +
+theme(plot.title = element_text(size = 20))
+
+ggplotly(p, tooltip = "text")
+```
+### Age (PC1,PC2)
+```{r, cache=TRUE,echo=FALSE}
+p <- ggplot(pc_scores, aes(x = PC1, y = PC2, color = age, shape = strain, text = rownames(pc_scores))) +
+geom_point() +
+labs(title = "PCA Plot") +
+theme(plot.title = element_text(size = 20))
+
+ggplotly(p, tooltip = "text")
+```
+### Age (PC2,PC3)
+```{r, cache=TRUE,echo=FALSE}
+p <- ggplot(pc_scores, aes(x = PC2, y = PC3, color = age, shape = strain, text = rownames(pc_scores))) +
+geom_point() +
+labs(title = "PCA Plot") +
+theme(plot.title = element_text(size = 20))
+
+ggplotly(p, tooltip = "text")
+```
+### Batch (PC1,PC2)
+```{r, cache=TRUE,echo=FALSE}
+p <- ggplot(pc_scores, aes(x = PC1, y = PC2, color = batch, shape = strain, text = rownames(pc_scores))) +
+geom_point() +
+labs(title = "PCA Plot") +
+theme(plot.title = element_text(size = 20))
+
+ggplotly(p, tooltip = "text")
+```
+### Batch (PC2,PC3)
+```{r, cache=TRUE,echo=FALSE}
+p <- ggplot(pc_scores, aes(x = PC2, y = PC3, color = batch, shape = strain, text = rownames(pc_scores))) +
+geom_point() +
+labs(title = "PCA Plot") +
+theme(plot.title = element_text(size = 20))
+
+ggplotly(p, tooltip = "text")
+```
+:::
+
+## 129SVEV
+::: {.panel-tabset}
+### Microbiome (PC1,PC2)
+```{r, cache=TRUE, echo=FALSE}
+pca <- trqwe::mcreadRDS(here("results","rds","pca_75_liver_cc.rds"), mc.cores = 4)
+pc_scores <- pca$rotated %>% as.data.frame
+pc_scores$microbiome <- pca$metadata$microbiome
+pc_scores$age <- pca$metadata$age
+pc_scores$organ <- pca$metadata$organ
+pc_scores$batch <- pca$metadata$batch
+pc_scores$strain <-  pca$metadata$strain
+p <- ggplot(pc_scores, aes(x = PC1, y = PC2, color = microbiome, shape = strain, text = rownames(pc_scores))) +
+geom_point() +
+labs(title = "PCA Plot") +
+theme(plot.title = element_text(size = 20))
+
+ggplotly(p, tooltip = "text")
+```
+### Microbiome (PC2,PC3)
+```{r, echo=FALSE}
+p <- ggplot(pc_scores, aes(x = PC2, y = PC3, color = microbiome, shape = strain, text = rownames(pc_scores))) +
+geom_point() +
+labs(title = "PCA Plot") +
+theme(plot.title = element_text(size = 20))
+
+ggplotly(p, tooltip = "text")
+```
+### Age (PC1,PC2)
+```{r, cache=TRUE,echo=FALSE}
+p <- ggplot(pc_scores, aes(x = PC1, y = PC2, color = age, shape = strain, text = rownames(pc_scores))) +
+geom_point() +
+labs(title = "PCA Plot") +
+theme(plot.title = element_text(size = 20))
+
+ggplotly(p, tooltip = "text")
+```
+### Age (PC2,PC3)
+```{r, cache=TRUE,echo=FALSE}
+p <- ggplot(pc_scores, aes(x = PC2, y = PC3, color = age, shape = strain, text = rownames(pc_scores))) +
+geom_point() +
+labs(title = "PCA Plot") +
+theme(plot.title = element_text(size = 20))
+
+ggplotly(p, tooltip = "text")
+```
+### Batch (PC1,PC2)
+```{r, cache=TRUE,echo=FALSE}
+p <- ggplot(pc_scores, aes(x = PC1, y = PC2, color = batch, shape = strain, text = rownames(pc_scores))) +
+geom_point() +
+labs(title = "PCA Plot") +
+theme(plot.title = element_text(size = 20))
+
+ggplotly(p, tooltip = "text")
+```
+### Batch (PC2,PC3)
+```{r, cache=TRUE,echo=FALSE}
+p <- ggplot(pc_scores, aes(x = PC2, y = PC3, color = batch, shape = strain, text = rownames(pc_scores))) +
+geom_point() +
+labs(title = "PCA Plot") +
+theme(plot.title = element_text(size = 20))
+
+ggplotly(p, tooltip = "text")
+```
+:::
+
+::::
